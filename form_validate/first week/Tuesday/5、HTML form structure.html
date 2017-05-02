@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>html form structure</title>
+</head>
+<body>
+<form method="post" action="">
+    账户：<input type="text" name="" id="userid" /><br/><br/>
+    密码: <input type="password" name="" id="userpwd" /><br/><br/>
+    确认: <input type="password" name="" id="userpwd2" /><br/><br/>
+    <input type="submit" value="注册" onclick="return eg.regCheck();"/>
+</form>
+<script type="text/javascript">
+    var eg={};
+    //声明一个对象，当做命名空间来使用
+    //定义一个公共函数来获取指定id元素，减少代码量，提高代码复用率
+    eg.$=function (id) {
+        return document.getElementById(id);
+        //括号里id不可以用""包起来，因为他是泛指元素的id，包起来就意味着该id的名字就是"id",并且函数无法正常获取id;
+    };
+    eg.regCheck=function () {
+       var uid=eg.$("userid");
+       var upwd=eg.$("userpwd");
+       var upwd2=eg.$("userpwd2");
+       if(uid.value==""){
+           alert('账户不能为空！');
+           return false;
+       }
+       if(upwd.value==""){
+           alert('密码不能为空！');
+           return false;
+       }
+       if(upwd2.value!==upwd.value){
+           alert('两次密码不一样');
+           return false;
+       }
+       return true;
+    };
+</script>
+</body>
+</html>
