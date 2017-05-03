@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>处理各种类型表单一</title>
+</head>
+<body>
+<form method="post" action="" onsubmit="return eg.regCheck();">
+    <input type="hidden" name="" id="errnum" value="0"/>
+    账户：<input type="text" id="userid"/><br/><br/>
+    密码：<input type="password" id="userpwd"/><br/><br/>
+    确认：<input type="password" id="userpwd2"/><br/><br/>
+    简介：<textarea name="" id="about" cols="18" rows="4"></textarea><br/><br/>
+    <input type="submit" value="注册" id="regBtn"/>
+    <input type="button" value="解锁" onclick="eg.unlock()" style="display:none;" id="regUnlock" />
+</form>
+<script type="text/javascript">
+    var eg={};
+    eg.$=function (id) {
+        return document.getElementById(id);
+    };
+    eg.regCheck=function(){
+        var uid=eg.$("userid");
+        var upwd=eg.$("userpwd");
+        var upwd2=eg.$("userpwd2");
+        if(uid.value==""){
+            alert("账户不能为空");
+            eg.err();
+            return false;
+        }
+        if(upwd.value==""){
+            alert("密码不能为空");
+            eg.err();
+            return false;
+        }
+        if(upwd.value!==upwd2.value){
+            alert("两次输入结果不一样");
+            eg.err();
+            return false;
+        }
+        //新增部分
+        var about=eg.$("about");
+        if(about.value.length>60){
+            alert('简介太长！');
+            eg.err();
+            return false;
+        }
+        return true;
+    };
+    //出错时记录错误次数
+    eg.err=function () {
+        var el=eg.$("errnum");
+        var old=el.value;
+        el.value=parseInt(old)+1;
+        eg.lock();
+    };
+    //通过次数判断是否要锁定注册
+    eg.lock=function () {
+        var err=eg.$("errnum");
+        if(parseInt(err.value)>2){
+            eg.$("regBtn").disabled=true;
+            //根据业务需求，输错三次就锁定
+            eg.$("regUnlock").style="display:block";
+        }
+    };
+//解锁
+    eg.unlock=function () {
+        eg.$("regBtn").disabled=false;
+        //根据业务需求，解锁就是让用户可以重新注册
+        eg.$("regUnlock").style="display:none";
+
+    }
+
+
+
+
+</script>
+</body>
+</html>

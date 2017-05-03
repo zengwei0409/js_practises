@@ -5,11 +5,17 @@
     <title>html form structure</title>
 </head>
 <body>
-<form method="post" action="">
+<!--<form method="post" action="">-->
+    <!--账户：<input type="text" name="" id="userid" /><br/><br/>-->
+    <!--密码: <input type="password" name="" id="userpwd" /><br/><br/>-->
+    <!--确认: <input type="password" name="" id="userpwd2" /><br/><br/>-->
+    <!--<input type="submit" value="注册" onclick="return eg.regCheck();"/>-->
+<!--</form>-->
+<form method="post" action="" onsubmit="return eg.regCheck();">
     账户：<input type="text" name="" id="userid" /><br/><br/>
     密码: <input type="password" name="" id="userpwd" /><br/><br/>
     确认: <input type="password" name="" id="userpwd2" /><br/><br/>
-    <input type="submit" value="注册" onclick="return eg.regCheck();"/>
+    <input type="submit" value="注册"/>
 </form>
 <script type="text/javascript">
     var eg={};

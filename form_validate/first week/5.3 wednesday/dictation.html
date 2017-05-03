@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>dictation</title>
+</head>
+<body>
+<form method="post" action="" onsubmit="return eg.regCheck();">
+    <input type="hidden" id="errnum" value="0"/>
+    账户：<input type="text" name="" id="userid" /><br/><br/>
+    密码: <input type="password" name="" id="userpwd" /><br/><br/>
+    确认: <input type="password" name="" id="userpwd2" /><br/><br/>
+    简介：<textarea name="" id="about" cols="18" rows="4"></textarea><br/><br/>
+    <input type="submit" value="注册" id="regBtn"/>
+    <input type="button" value="解锁" style="display: none;" id="regUnlock" onclick="eg.unlock();">
+</form>
+<script type="text/javascript">
+    var eg={};
+    eg.$=function (id) {
+        return document.getElementById(id);
+    };
+    eg.regCheck=function () {
+        var uid=eg.$("userid");
+        var upwd=eg.$("userpwd");
+        var upwd2=eg.$("userpwd2");
+        if(uid.value==""){
+            alert('账户不能为空！');
+            eg.err();
+            return false;
+        }
+        if(upwd.value==""){
+            alert('密码不能为空！');
+            eg.err();
+            return false;
+        }
+        if(upwd2.value!==upwd.value){
+            alert('两次密码不一样');
+            eg.err();
+            return false;
+        }
+        if(eg.$("about").value.length>10){
+            alert('内容太长了');
+            eg.err();
+            return false;
+        }
+        return true;
+    };
+    eg.err=function () {
+        var el=eg.$("errnum");
+        var old=el.value;
+        el.value=parseInt(old)+1;//必须用parseInt 不然会默认当前页面也算一次
+        eg.lock();
+    };
+    eg.lock=function () {
+        var el=eg.$("errnum");
+        if(parseInt(el.value)>2){
+            eg.$("regBtn").disabled=true;
+            eg.$("regUnlock").style="display:block";
+        }
+    };
+    eg.unlock=function () {
+        eg.$("regBtn").disabled=false;
+        eg.$("regUnlock").style="display:none";
+        eg.$("errnum").value=0;//可以添加来给错误次数归零
+    }
+
+</script>
+
+</body>
+</html>
