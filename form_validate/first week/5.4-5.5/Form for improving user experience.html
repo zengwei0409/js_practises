@@ -21,7 +21,7 @@
     <option value="3">24岁-30岁</option>
     <option value="4">30岁-35岁</option>
     <option value="5">35岁以上</option>
-    </select><br/><br/>
+</select><br/><br/>
     爱好：
     <input type="checkbox" name="like" value="1" class="like"/>上网
     <input type="checkbox" name="like" value="2" class="like"/>逛街
@@ -29,6 +29,7 @@
     <input type="checkbox" name="like" value="4" class="like"/>其他
     <br/><br/>
     简介：<textarea name="" id="about" cols="18" rows="4"></textarea><br/><br/>
+    邮箱：<input type="text" name="" id="email"/><br/><br/>
     <input type="submit" value="注册" id="regBtn"/>
     <input type="button" value="解锁" onclick="eg.unlock()" style="display:none;" id="regUnlock" />
 </form>
@@ -37,6 +38,7 @@
     eg.$=function (id) {
         return document.getElementById(id);
     };
+    //定义一个公共函数来获取指定class名称的元素集合，能兼容各浏览器
     eg.getElementsByClassName=function (className,element) {
         if(document.getElementsByClassName){//如果浏览器支持，直接返回
             return (element||document).getElementsByClassName(className);
@@ -55,6 +57,11 @@
         }
         return elements;
     };
+    //定义一个公共函数来解决事件监听的兼容问题
+
+
+
+    //主要的验证方法
     eg.regCheck=function(){
         var uid=eg.$("userid");
         var upwd=eg.$("userpwd");
@@ -99,6 +106,12 @@
             eg.err();
             return false;
         }
+        var email=eg.$("email");
+        if(!/^[A-Za-z\d]+[A-Za-z\d\-_\.]*@([A-Za-z\d]+[A-Za-z\d\-]*\.)+[A-Za-z]{2,4}$/.test(email.value)){
+            alert('请输入正确的邮箱！');
+            eg.err();
+            return false;
+        }
         return true;
     };
     //出错时记录错误次数
@@ -122,12 +135,7 @@
         eg.$("regBtn").disabled=false;
         //根据业务需求，解锁就是让用户可以重新注册
         eg.$("regUnlock").style="display:none";
-
-    }
-
-
-
-
+    };
 </script>
 </body>
 </html>
