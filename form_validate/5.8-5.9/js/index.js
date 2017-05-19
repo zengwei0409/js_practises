@@ -1,6 +1,4 @@
-/**
- * Created by Administrator on 2017/5/10.
- */
+/*** Created by Administrator on 2017/5/10.*/
 var news=document.getElementById("news");
 //获取数据
 var xhr=new XMLHttpRequest();
