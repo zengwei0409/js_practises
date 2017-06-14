@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            -webkit-user-select: none;
+        }
+        ul,li{
+            list-style: none;
+        }
+        html,body{
+            width: 100%;
+            height: 100%;
+        }
+        img.bg{
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            z-index: 1;
+        }
+        .silder {
+            position: absolute;
+            z-index: 999;
+            text-align: center;
+            width: 100%;
+            bottom: 100px;
+        }
+        .silder li{
+            display: inline-block;
+            width: 160px;
+            border: 2px solid #fff;
+            margin-left: 20px;
+            border-radius: 10px;
+        }
+        .silder a{
+            display: inline-block;
+            width: 160px;
+            padding: 70px 0 20px;
+            position: relative;
+            text-decoration: none;
+            color:#fff;
+            font-family: "yesteryear", cursive;
+            font-size:20px;
+            text-shadow: -1px -1px 1px rgba(0,0,0,.8),-2px -2px 1px rgba(0,0,0,.5),-3px -3px 1px rgba(0,0,0,.3);
+            vertical-align: top;
+        }
+        .silder li:nth-child(1){
+            background-color:#27ABFF ;
+        }
+        .silder li:nth-child(2){
+            background-color:#C118FF ;
+        }
+        .silder li:nth-child(3){
+            background-color:#15FFB9 ;
+        }
+        .silder li:nth-child(4){
+            background-color:#FF8738 ;
+        }
+        .silder li:nth-child(5){
+            background-color:#FF0D3F ;
+        }
+        .silder a:before{
+            display: block;
+            content: '';
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border:5px solid #fff;
+            position: absolute;
+            top:-70px;
+            left:50%;
+            margin-left: -65px;
+            z-index: 1000;
+            transform-style:preserve-3d;
+        }
+        .silder li:nth-child(1) a:before{
+            background: url(img/sbg1.jpg) center no-repeat;
+        }
+        .silder li:nth-child(2) a:before{
+            background: url(img/sbg2.jpg) center no-repeat;
+        }
+        .silder li:nth-child(3) a:before{
+            background: url(img/sbg3.jpg) center no-repeat;
+        }
+        .silder li:nth-child(4) a:before{
+            background: url(img/sbg4.jpg) center no-repeat;
+        }
+        .silder li:nth-child(5) a:before{
+            background: url(img/sbg5.jpg) center no-repeat;
+        }
+        .silder a:after{
+            display: block;
+            content: '';
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            position: absolute;
+            top:-65px;
+            left:50%;
+            margin-left: -60px;
+            z-index: 9999;
+            background: rgba(0,0,0,.5);
+        }
+        .silder a:hover:after{
+            opacity:0;
+            filter:alpha(opacity=0);
+        }
+        .leftIn:target{
+            animation: leftIn 1s ease-in-out;
+            z-index: 10;
+        }
+        @keyframes leftIn {
+            0%{left:-50%}
+            100%{left:0;}
+        }
+        .btIn:target{
+            animation: btIn 1s ease-in-out;
+            z-index: 10;
+        }
+        @keyframes btIn {
+            0%{bottom:-50%}
+            100%{bottom:0;}
+        }
+        .bigIn:target{
+            animation: bigIn 1s ease-in-out;
+            z-index: 10;
+        }
+        @keyframes bigIn {
+            0%{transform:scale(1.6)}
+            100%{transform:scale(1)}
+        }
+        .smallIn:target{
+            animation: smallIn 1s ease-in-out;
+            z-index: 10;
+        }
+        @keyframes smallIn {
+            0%{transform:scale(0.5)}
+            100%{transform:scale(1)}
+        }
+        .rotateIn:target{
+            animation: rotateIn 1s ease-in-out;
+            z-index: 10;
+        }
+        @keyframes rotateIn {
+            0%{
+                transform:rotate(-360deg) scale(0.5);
+                perspective: 400px;
+            }
+            100%{
+                transform:rotate(0) scale(1);
+                perspective: 400px;}
+        }
+    </style>
+</head>
+<body>
+    <section>
+        <div class="silder">
+            <ul>
+                <li><a href="#bg1">you are so beautiful</a></li>
+                <li><a href="#bg2">that looks so delicious</a></li>
+                <li><a href="#bg3">the girl is so crazy</a></li>
+                <li><a href="#bg4">the man is funny</a></li>
+                <li><a href="#bg5">Coquettish red lips </a></li>
+            </ul>
+        </div>
+        <img class="bg leftIn" id="bg1" src="img/bg1.jpg"/>
+        <img class="bg btIn" id="bg2" src="img/bg2.jpg"/>
+        <img class="bg bigIn" id="bg3" src="img/bg3.jpg"/>
+        <img class="bg smallIn" id="bg4" src="img/bg4.jpg"/>
+        <img class="bg rotateIn" id="bg5" src="img/bg5.jpg"/>
+    </section>
+</body>
+</html>

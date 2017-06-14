@@ -13,7 +13,13 @@ xhr.send(null);
 if(window.data&&window.data.length){
     var str=``;
     for(var i=0;i<data.length;i++){
-        str+=`<li><div><img src="" photo="${data[i].src}" alt=""></div><div><h2>${data[i].title}</h2><p>${data[i].desc}</p></div></li>`;
+        str+=`<li>
+<div>
+<img src="" photo="${data[i].src}" alt=""></div>
+<div><h2>${data[i].title}</h2>
+<p>${data[i].desc}</p>
+</div>
+</li>`;
     }
 }
 news.innerHTML=str;

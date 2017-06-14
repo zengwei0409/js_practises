@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        html,body{
+            margin: 0;
+            padding: 0;
+        }
+        #box{
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: 1px solid black;
+            box-shadow: 3px 3px 1px rgba(0,0,0,.5);
+            background: radial-gradient(circle at 50% 50%,red,yellow,blue,black);
+            position: relative;
+            left: 0;
+            top:0;
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+<script src="js/public.js" type="text/javascript" charset="utf-8"></script>
+<script>
+    var box=document.getElementById("box");
+    var begin=public.css(box,"left");
+    var target=public.win("clientWidth")-box.offsetWidth;
+    var timer=null,time=0,duration=2000;
+    timer=window.setInterval(function () {
+        time+=30;
+        if(time>=duration){
+            window.clearInterval(timer);
+            public.css(box,left,target);
+            return;
+        }
+        var left=begin+(target-begin)/duration*time;
+        public.css(box,"left",left);
+    },40)
+
+</script>
+</body>
+</html>

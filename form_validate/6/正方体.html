@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        html,body,div,img,span{
+            margin: 0;
+            padding: 0;
+        }
+        .stage{
+            width: 400px;
+            height: 400px;
+            margin: 80px auto;
+            perspective:1200px ;/*1200-2000*/
+        }
+        .cube{
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            transform: rotateX(-30deg) rotateY(20deg);
+        }
+        .cube div{
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            transition: all 1.5s 0.2s ease-in;
+        }
+        .cube div img{
+            border: none;
+            width: 100%;
+            height: 100%;
+            opacity: .6;
+        }
+        .cube div span{
+            position: absolute;
+            display: block;
+            width: 100%;
+            height: 100px;
+            font-size: 60px;
+            text-align: center;
+            line-height: 100px;
+            top:150px;
+            color:#fff;
+            font-weight: bold;
+            text-shadow: 0 0 0 rgb(188,178,188),1px -1px 0 rgb(173,163,173),2px -2px 0 rgb(157,147,157),3px -3px 0 rgb(142,132,142),4px -4px 0 rgb(126,116,126),5px -5px 0 rgb(111,101,111),6px -6px 0 rgb(95,85,95),7px -7px 0 rgb(79,69,79),8px -8px 7px rgba(0,0,0,.2);
+        }
+        .front div:nth-child(1){
+            transform:translateZ(200px);
+        }
+        .back div:nth-child(2){
+            transform:rotateY(180deg) translateZ(200px);
+        }
+        .left div:nth-child(3){
+            transform:rotateY(-90deg) translateZ(200px);
+        }
+        .right div:nth-child(4){
+            transform:rotateY(90deg) translateZ(200px);
+        }
+        .top div:nth-child(5){
+            transform:rotateX(90deg) translateZ(200px);
+        }
+        .bottom div:nth-child(6){
+            transform:rotateX(-90deg) translateZ(200px);
+        }
+    </style>
+</head>
+<body>
+<div class="stage">
+    <div class="cube">
+        <div>
+            <img src="images/front.jpg" alt="" />
+            <span>FRONT</span>
+        </div>
+        <div>
+            <img src="images/back.jpg" alt="" />
+            <span>BACK</span>
+        </div>
+        <div>
+            <img src="images/left.jpg" alt="" />
+            <span>LEFT</span>
+        </div>
+        <div>
+            <img src="images/right.jpg" alt="" />
+            <span>RIGHT</span>
+        </div>
+        <div>
+            <img src="images/top.jpg" alt="" />
+            <span>TOP</span>
+        </div>
+        <div>
+            <img src="images/bottom.jpg" alt="" />
+            <span>BOTTOM</span>
+        </div>
+    </div>
+</div>
+</body>
+<script type="text/javascript">
+    var cube=document.getElementsByClassName("cube")[0];
+    var step=0;
+    function changePos(){
+        step++;
+        if(step==7)step=0;
+        cube.classList[step>0?"add":"remove"]("front");
+        cube.classList[step>1?"add":"remove"]("back");
+        cube.classList[step>2?"add":"remove"]("left");
+        cube.classList[step>3?"add":"remove"]("right");
+        cube.classList[step>4?"add":"remove"]("top");
+        cube.classList[step>5?"add":"remove"]("bottom");
+    };
+    window.setInterval(changePos,2000);
+</script>
+</html>
