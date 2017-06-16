@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>瀑布流</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        ul li{
+            list-style: none;
+        }
+        html body{
+            width: 100%;
+            height: 100%;
+            font-size: 0;
+        }
+        ul{
+            width: 18%;
+            margin:50px 1%;
+            background-color: red;
+            display: inline-block;
+            font-size: 12px;
+        }
+        li{
+
+        }
+
+    </style>
+</head>
+<body>
+<ul>111111</ul>
+<ul>111111</ul>
+<ul>111111</ul>
+<ul>111111</ul>
+<ul>111111</ul>
+<!--
+页面固定有5列（5个ul），每个ul的高度不设置，让li撑开，比如先创建50个li，循环添加到ul中，每次都添加给当前最短的ul，ul的高度会随着li的增加而增加，所以每一次都需要重新排序判断最短的ul是谁
+创建li的时候我们给他的高度是随机的获取的（获取200-550之间的随机整数作为他的高度），再给创建的这个li中创建一个图片，图片的地址也需要随机获取(src="img/"+[1-23]随机整数+".jpg")
+最后在给他创建一个p便签
+-->
+</body>
+</html>
+<script src="js/public.js" type="text/javascript"></script>
+<script type="text/javascript">
+
+</script>
